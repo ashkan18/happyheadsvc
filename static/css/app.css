@@ -1,0 +1,62 @@
+/**
+    This file has custom CSS changes needed for KBDegree App
+*/
+
+.col-xs-1 {
+    margin-left: 50px; /* when we use 12 item grid on artist page this we need to add margin to center thing */
+}
+
+.navbar{
+    height: 300px;
+    background: #FFFFFF url('../images/header.jpg') no-repeat;
+}
+
+.navbar-right .dropdown-menu {
+    right: auto;
+}
+
+.search_dropdown {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.search_dropdown>li>a {
+    padding-left: 7px;
+}
+
+.list-item {
+    padding-top: 6px;
+}
+
+#pleaseWaitDialog {
+    position: absolute;
+    top: 45%;
+    left: 5%;
+}
+
+
+@media (max-width: 979px) {
+    .navbar {
+        padding-top: 0px;
+    }
+}
+
+/* Animation for fade in an item, used by artist images */
+.fadeIn {
+    -webkit-animation: fadeIn 5s; /* Chrome, Safari, Opera */
+    animation: myfirst 5s;
+}
+
+
+@-webkit-keyframes fadeIn
+{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Standard syntax */
+@keyframes fadeIn
+{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
