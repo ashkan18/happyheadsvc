@@ -41,5 +41,13 @@
 
 <script src="js/KBDegree.min.js"></script>
 
+<input type="button" value="Say helloooo" onClick="showAndroidToast('Hello Android!')" />
+
+<script type="text/javascript">
+    function showAndroidToast(toast) {
+        Platform.showMessageAndTakePhoto();
+    }
+</script>
+
 </body>
 </html>
