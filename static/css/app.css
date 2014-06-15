@@ -1,62 +1,61 @@
-/**
-    This file has custom CSS changes needed for KBDegree App
-*/
 
-.col-xs-1 {
-    margin-left: 50px; /* when we use 12 item grid on artist page this we need to add margin to center thing */
+
+.user {
+    line-height: 42px;
 }
 
-.navbar{
+.inbox .profile-pic, .message .profile-pic {
+    width: 42px;
+    height: 42px;
+  border-radius: 50%;
+
+  /* Prevent background color leak outs */
+  -webkit-background-clip: padding-box; 
+  -moz-background-clip:    padding; 
+  background-clip:         padding-box;
+}
+
+.msg {
+    margin: 0 auto;
+}
+
+.camera {
+    width: 300px;
     height: 300px;
-    background: #FFFFFF url('../images/header.jpg') no-repeat;
+    border: 1px solid #AAA;
+    margin: 20px auto;
+    background: url('../images/tmp/yaroo.png');
+    background-size: 300px 300px;
+    background-repeat: no-repeat;
 }
 
-.navbar-right .dropdown-menu {
-    right: auto;
+.message .camera {
+    opacity: 0.6;
 }
 
-.search_dropdown {
-    max-height: 500px;
-    overflow-y: scroll;
+.content > .table-view:first-child {
+    margin-top: 0px;
+    border-top: 0px;
 }
 
-.search_dropdown>li>a {
-    padding-left: 7px;
+.msg-cell {
+    padding: 15px;
+    height: 90px;
+    border-bottom: 1px solid #EEE;
+
 }
 
-.list-item {
-    padding-top: 6px;
+.progress-bar {
+    width: 90%;
+    margin: 10px auto;
+
 }
 
-#pleaseWaitDialog {
-    position: absolute;
-    top: 45%;
-    left: 5%;
+ .progressjs-inner {
+    background-color: #3DB3D4;
+    height: 2px;
 }
 
-
-@media (max-width: 979px) {
-    .navbar {
-        padding-top: 0px;
-    }
-}
-
-/* Animation for fade in an item, used by artist images */
-.fadeIn {
-    -webkit-animation: fadeIn 5s; /* Chrome, Safari, Opera */
-    animation: myfirst 5s;
-}
-
-
-@-webkit-keyframes fadeIn
-{
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-/* Standard syntax */
-@keyframes fadeIn
-{
-    from {opacity: 0;}
-    to {opacity: 1;}
+ .progressjs-percent {
+    display: none;
 }
