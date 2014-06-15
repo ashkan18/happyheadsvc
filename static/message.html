@@ -19,7 +19,7 @@
     <!-- Include the compiled Ratchet JS -->
     <script src="js/ratchet.js"></script>
   </head>
-  <body>
+  <body class="message">
 
     <!-- Make sure all your bars are the first things in your <body> -->
     <header class="bar bar-nav">
@@ -33,33 +33,24 @@
       
         <ul class="table-view">
           <li class="table-view-cell">
-            <a href="message.html">
-                <img class="media-object pull-left" src="http://placehold.it/42x42">
+                <img class="media-object pull-left profile-pic" src="images/tmp/raschin.png">
                 <div class="media-body">
-                    <div class="user">Sepand</div>
+                    <div class="user">Raschin</div>
                 </div>
-                <span class="badge">4</span>
-            </a>
           </li>
-          <li class="table-view-cell">
-            <a href="message.html">
-                <img class="media-object pull-left" src="http://placehold.it/42x42">
-                <div class="media-body">
-                    <div class="user">Ashkan</div>
-                </div>
-                <span class="badge">2</span>
-            </a>
+          <li class="msg-cell">
+            <div class="msg">
+                Did you know 90% of your body is water?
+            </div>
           </li>
-          <li class="table-view-cell">
-            <a href="message.html">
-                <img class="media-object pull-left" src="http://placehold.it/42x42">
-                <div class="media-body">
-                    <div class="user">Soheil</div>
-                </div>
-                <span class="badge">432</span>
-            </a>
+          <li class="cam-cell">
+            <div class="camera"></div>
+
+            <div class="progress-bar"></div>
           </li>
+
         </ul>
+
     </div>
 
     <nav class="bar bar-tab">
@@ -84,6 +75,19 @@
         <span class="tab-label">Settings</span>
       </a>
     </nav>
+
+
+  <script src="js/ratchet.js"></script>
+  <script src="js/push.js"></script>
+
+  <script src="js/zepto.min.js"></script>
+  <script src="js/progress.min.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    HappyHead.initMsgPage();
+  </script>
+
 
   </body>
 </html>
