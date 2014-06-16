@@ -28,9 +28,6 @@
 <script src="js/app.js"></script>
 
 <script>
-    //
-</script>
-<script>
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
         console.log('statusChangeCallback');
@@ -41,8 +38,8 @@
         // for FB.getLoginStatus().
         if (response.status === 'connected') {
             // Logged into your app and Facebook.
-            testAPI();
-            HappyHead.initIndexPage(response.name);
+            HappyHead.successfulLogin(response.authResponse.accessToken, response.authResponse.userID)
+            HappyHead.initIndexPage();
         } else if (response.status === 'not_authorized') {
             // The person is logged into Facebook, but not your app.
             document.getElementById('status').innerHTML = 'Please log ' +
@@ -124,7 +121,7 @@
     <h1>Reacto</h1>
     <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
     </fb:login-button>
-
+    <input type='button' onclick="HappyHead.initIndexPage()" value="Login" />N
     <div id="status">
     </div>
 
