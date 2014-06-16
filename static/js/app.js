@@ -10,15 +10,9 @@ var HappyHead = (function(document, window, $) {
 
 	},
 
-    _hh.successfulLogin = function(accessToken, userID) {
-        _hh.accessToken = accessToken;
-        _hh.userID = userID;
-
-    },
-
 	_hh.initIndexPage = function() {
 		setTimeout(function() {
-            document.location = 'inbox.html'
+			document.location = 'inbox.html'
 
 		}, 2000);
 
