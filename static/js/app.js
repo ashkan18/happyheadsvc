@@ -8,6 +8,14 @@ var HappyHead = (function(document, $) {
 
 	},
 
+	_hh.initIndexPage = function() {
+		setTimeout(function() {
+			document.location = 'inbox.html'
+
+		}, 2000);
+	},
+
+
 	_hh.initMsgPage = function() {
 		console.log('msg init');
 		progressJs(".progress-bar").start().autoIncrease(5, 100).onbeforeend(function() {
