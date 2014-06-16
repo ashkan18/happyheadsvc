@@ -30,7 +30,7 @@
     <div class="content">
         <ul class="table-view">
           <li class="table-view-cell">
-            <a href="../message.html">
+            <a href="../message.html" data-ignore="push">
                 <img class="media-object pull-left profile-pic" src="images/tmp/raschin.png">
                 <div class="media-body">
                     <div class="user">Raschin</div>
@@ -39,7 +39,7 @@
             </a>
           </li>
           <li class="table-view-cell">
-            <a href="message.html">
+            <a href="message.html" data-ignore="push">
                 <img class="media-object pull-left profile-pic" src="images/tmp/ashkan.jpg">
                 <div class="media-body">
                     <div class="user">Ashkan</div>
@@ -48,7 +48,7 @@
             </a>
           </li>
           <li class="table-view-cell">
-            <a href="message.html">
+            <a href="message.html" data-ignore="push">
                 <img class="media-object pull-left profile-pic" src="images/tmp/soheil.jpg">
                 <div class="media-body">
                     <div class="user">Soheil</div>
@@ -87,6 +87,11 @@
 
   <script src="js/zepto.min.js"></script>
   <script src="js/app.js"></script>
+
+  <script>
+        //window.addEventListener('push', function(e) { console.log('push'); HappyHead.pushCallback('inbox', e); });
+
+  </script>
 
   </body>
 

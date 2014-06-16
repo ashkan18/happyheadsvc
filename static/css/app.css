@@ -37,6 +37,7 @@
 
 .message .camera {
     opacity: 0.6;
+    transition: opacity 0.5 linear;
 }
 
 .content > .table-view:first-child {
@@ -48,6 +49,9 @@
     padding: 15px;
     height: 90px;
     border-bottom: 1px solid #EEE;
+
+    transition: all 0.7s;
+   
 
 }
 
@@ -65,3 +69,18 @@
  .progressjs-percent {
     display: none;
 }
+
+.sending  {
+    font-size: 0.9em;
+    width: 80%;
+    margin: 10px auto;
+    transition: all 0.7s linear;
+    height: 0px;
+    opacity: 0;
+
+}
+
+.sending .btn-block {
+    width: 100%;
+}
+
