@@ -9,6 +9,6 @@ class UserModel(BaseModel):
     created_date = None
     friends = []
 
-    def __init__(self, user_id, name):
-        self.user_id = user_id
+    def __init__(self, id, name):
+        self.id = id
         self.name = name

@@ -1,6 +1,7 @@
 import os
 from urlparse import urlparse
 import pymongo
+from happyheadsvc import app
 
 __author__ = 'Ashkan'
 
@@ -24,14 +25,16 @@ def make_data_connection():
     MONGO_URL = os.environ.get('MONGOHQ_URL')
 
     if MONGO_URL:
+        app.logger.info(u"Use environment mongo")
         # Get a connection
         conn = pymongo.Connection(MONGO_URL)
         # Get the database
-        db = conn[urlparse(MONGO_URL).path[1:]]
+        _db = conn[urlparse(MONGO_URL).path[1:]]
     else:
         # Not on an app with the MongoHQ add-on, do some localhost action
+        app.logger.info(u"Use Local mongo")
         conn = pymongo.Connection('localhost', 27017)
-    _db = conn.reacto
+        _db = conn.reacto
 
 _db = None  # pylint: disable=C0103
 make_data_connection()
