@@ -32,7 +32,7 @@ def search_users():
     query = request.args['query']
     return jsonify(users=dumps(user_service.search_users(query)))
 
-@app.route('/users/<int: user_id>/friend/<int:friend_user_id>', methods=['POST'])
+@app.route('/users/<int:user_id>/friend/<int:friend_user_id>', methods=['POST'])
 def add_friend(user_id, friend_user_id):
     user_service.add_friend(user_id=user_id, friend_user_id=friend_user_id)
     return jsonify(added=True)
