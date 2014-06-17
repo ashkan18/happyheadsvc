@@ -14,4 +14,5 @@ file_handler = StreamHandler()
 app.logger.setLevel(logging.DEBUG)  # set the desired logging level here
 app.logger.addHandler(file_handler)
 
+
 import interfaces.users_interface
