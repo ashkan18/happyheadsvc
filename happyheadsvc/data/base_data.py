@@ -1,4 +1,6 @@
-from pymongo import MongoClient
+import os
+from urlparse import urlparse
+import pymongo
 
 __author__ = 'Ashkan'
 
@@ -18,8 +20,18 @@ def make_data_connection():
     """
 
     global _db  # pylint: disable=W0603
-    _db = MongoClient('localhost', 27017).reacto
 
+    MONGO_URL = os.environ.get('MONGOHQ_URL')
+
+    if MONGO_URL:
+        # Get a connection
+        conn = pymongo.Connection(MONGO_URL)
+        # Get the database
+        db = conn[urlparse(MONGO_URL).path[1:]]
+    else:
+        # Not on an app with the MongoHQ add-on, do some localhost action
+        conn = pymongo.Connection('localhost', 27017)
+    _db = conn.reacto
 
 _db = None  # pylint: disable=C0103
 make_data_connection()

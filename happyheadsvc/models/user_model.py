@@ -1,5 +1,3 @@
-import datetime
-from happyheadsvc import db
 from happyheadsvc.models.base_model import BaseModel
 
 __author__ = 'Ashkan'
