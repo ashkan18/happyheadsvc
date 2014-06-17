@@ -22,14 +22,14 @@ class UserData(BaseData):
         """
         if self.find_user_by_id(user_model.id) is None:
             app.logger.debug(u"Adding user id: {0}".format(user_model.id))
-            self.db.users.insert(dumps(user_model))
+            self.db.users.insert({'id': user_model.id, 'name': user_model.name})
 
     def update_user(self, user_model):
         """
         Updates an existing user model
         :param user_model: user model of existing user with modified params
         """
-        self.db.users.save(dumps(user_model))
+        self.db.users.save(dumps({'id': user_model.id, 'name': user_model.name}))
 
     def search_by_name(self, name):
         """
