@@ -14,7 +14,7 @@ class MessageData(BaseData):
         :param message: MessageModel of the message we want to add
         :return: boolean showing if adding was successful
         """
-        self.db.messages.insert(message.to_json())
+        self.db.messages.insert(message)
         return True
 
     def get_inbox(self, user_id):
@@ -26,5 +26,5 @@ class MessageData(BaseData):
         inbox_messages = self.db.messages.find({'receiver_id': user_id, 'seen_date': None})
         inbox = []
         for message in inbox_messages:
-            inbox.append(MessageModel(message).to_json())
+            inbox.append(MessageModel(message))
         return inbox

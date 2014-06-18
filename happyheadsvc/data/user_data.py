@@ -25,7 +25,7 @@ class UserData(BaseData):
         """
         if self.find_user_by_id(user_model.id) is None:
             app.logger.debug(u"Adding user id: {0}".format(user_model.id))
-            self.db.users.insert(user_model.to_json())
+            self.db.users.insert(user_model)
 
     def get_friends(self, user_id):
         """
@@ -37,7 +37,7 @@ class UserData(BaseData):
         friends_result = self.db.users.find_one({'id': user_id})
         for friend_id in friends_result['friends']:
             friend_user_model = self.find_user_by_id(friend_id)
-            friends.append(friend_user_model.to_json())
+            friends.append(friend_user_model)
         return friends
 
     def update_user(self, user_model):
@@ -45,7 +45,7 @@ class UserData(BaseData):
         Updates an existing user model
         :param user_model: user model of existing user with modified params
         """
-        self.db.users.update({'id': user_model.id}, user_model.to_json(), upsert=False)
+        self.db.users.update({'id': user_model.id}, user_model, upsert=False)
 
     def search_by_name(self, name):
         """
@@ -56,5 +56,5 @@ class UserData(BaseData):
         user_list = []
         search_results = self.db.users.find({'name': {'$regex': name, '$options': 'i'}})
         for row in search_results:
-            user_list.append(UserModel(row).to_json())
+            user_list.append(UserModel(row))
         return user_list

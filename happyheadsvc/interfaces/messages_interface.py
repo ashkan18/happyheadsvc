@@ -33,5 +33,6 @@ def get_inbox(user_id):
         curl -X GET http://localhost:5000/messages/user/1/
     """
 
-    inbox_messages = message_service.get_inbox(user_id=user_id)
+    inbox_message_models = message_service.get_inbox(user_id=user_id)
+    inbox_messages = [message.to_json() for message in inbox_message_models]
     return jsonify(inbox=inbox_messages)

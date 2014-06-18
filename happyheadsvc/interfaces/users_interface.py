@@ -31,7 +31,9 @@ def search_users():
         curl -X GET http://localhost:5000/users/search?query=ashkan
     """
     query = request.args['query']
-    return jsonify(users=dumps(user_service.search_users(query)))
+    search_results_user_models = user_service.search_users(query)
+    search_results = [user.to_json for user in search_results_user_models]
+    return jsonify(results=search_results)
 
 
 @app.route('/users/<string:user_id>/friends/', methods=['GET'])
@@ -43,7 +45,9 @@ def get_friends(user_id):
     curl sample:
         curl -X GET http://localhost:5000/users/1/friends/
     """
-    return jsonify(users=dumps(user_service.get_friends(user_id)))
+    friends_models = user_service.get_friends(user_id)
+    friends = [friend.to_json() for friend in friends_models]
+    return jsonify(friends=friends)
 
 
 @app.route('/users/<string:user_id>/friend/<string:friend_user_id>', methods=['POST'])
