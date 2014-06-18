@@ -1,7 +1,6 @@
 from flask import request, jsonify
 from happyheadsvc import app
 from happyheadsvc.services import user_service
-from bson.json_util import dumps
 
 
 @app.route('/users/authenticate', methods=['POST'])

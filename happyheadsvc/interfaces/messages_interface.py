@@ -1,10 +1,10 @@
-from bson.json_util import dumps
 
 __author__ = 'Ashkan'
 
 from happyheadsvc.services import message_service
 from flask import request, jsonify
 from happyheadsvc import app
+
 
 @app.route('/messages/user/<string:sender_user_id>/friend/<string:receiver_user_id>/', methods=['POST'])
 def send_message_to_user(sender_user_id, receiver_user_id):
