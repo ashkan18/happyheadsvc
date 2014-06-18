@@ -16,3 +16,4 @@ app.logger.addHandler(file_handler)
 
 
 import interfaces.users_interface
+import interfaces.messages_interface

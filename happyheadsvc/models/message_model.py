@@ -4,18 +4,21 @@ from happyheadsvc.models.base_model import BaseModel
 __author__ = 'Ashkan'
 
 
-class UserModel(BaseModel):
-    id = None
-    name = None
+class MessageModel(BaseModel):
+    sender_id = None
+    receiver_id = None
+    text = None
+    image = None
     created_date = None
-    friends = []
+    seen_date = None
 
     def __init__(self, result_row=None):
-        self.id = None
-        self.name = None
-        self.friends = []
+        self.sender_id = None
+        self.receiver_id = None
+        self.text = None
+        self.image = None
         self.created_date = datetime.datetime.utcnow()
+        self.seen_date = None
 
         if result_row is not None:
-            # creating model from result row
             self.map(result_row)

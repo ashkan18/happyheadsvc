@@ -1,6 +1,6 @@
-from bson.json_util import dumps
 from happyheadsvc.data.base_data import BaseData
 from happyheadsvc import app
+from happyheadsvc.models.user_model import UserModel
 
 __author__ = 'Ashkan'
 
@@ -13,7 +13,10 @@ class UserData(BaseData):
         :param id:
         :return:
         """
-        return self.db.users.find_one({'id': id})
+        result_row = self.db.users.find_one({'id': id})
+        if result_row is not None:
+            return UserModel(result_row=result_row)
+        return None
 
     def add_user(self, user_model):
         """
@@ -22,14 +25,14 @@ class UserData(BaseData):
         """
         if self.find_user_by_id(user_model.id) is None:
             app.logger.debug(u"Adding user id: {0}".format(user_model.id))
-            self.db.users.insert({'id': user_model.id, 'name': user_model.name})
+            self.db.users.insert(user_model.to_json())
 
     def update_user(self, user_model):
         """
         Updates an existing user model
         :param user_model: user model of existing user with modified params
         """
-        self.db.users.save(dumps({'id': user_model.id, 'name': user_model.name}))
+        self.db.users.update({'id': user_model.id}, user_model.to_json(), upsert=False)
 
     def search_by_name(self, name):
         """
@@ -37,4 +40,8 @@ class UserData(BaseData):
         :param name: name of the user we are looking for
         :return: users from mongo db
         """
-        return self.db.users.find({'name': {'$regex': name, '$options': 'i'}})
+        user_list = []
+        search_results = self.db.users.find({'name': {'$regex': name, '$options': 'i'}})
+        for row in search_results:
+            user_list.append(UserModel(row).to_json())
+        return user_list

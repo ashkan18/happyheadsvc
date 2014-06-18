@@ -9,7 +9,9 @@ __user_data = UserData()
 
 
 def authenticate_user(user_id, access_token, name):
-    user_model = UserModel(id=user_id, name=name)
+    user_model = UserModel()
+    user_model.id = user_id
+    user_model.name = name
 
     user_exits = __user_data.find_user_by_id(user_model.id)
     app.logger.info(u"Looking for user: {0}".format(user_exits))

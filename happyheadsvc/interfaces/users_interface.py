@@ -32,17 +32,15 @@ def search_users():
     query = request.args['query']
     return jsonify(users=dumps(user_service.search_users(query)))
 
-@app.route('/users/<int:user_id>/friend/<int:friend_user_id>', methods=['POST'])
+@app.route('/users/<string:user_id>/friend/<string:friend_user_id>', methods=['POST'])
 def add_friend(user_id, friend_user_id):
+    """
+    This method will add a friend to existing user
+    :param user_id: the id of the user we want to add friend to
+    :param friend_user_id: friend user id
+
+    curl sample:
+        curl -X POST http://localhost:5000/users/1/friend/2
+    """
     user_service.add_friend(user_id=user_id, friend_user_id=friend_user_id)
     return jsonify(added=True)
-
-@app.route('/users/<int:user_id>/messages', methods=['GET'])
-def get_users_messages(user_id):
-    """
-    This method returns a list of current messages for a user
-    @param user_id: int user identifier of the user we want to get their messages
-    @return: json result that has list of all the messages of this user and their status
-    """
-    return jsonify(messages=[{'id': 2, 'sender': 'ashkan'}, {'id': 23, 'sender': 'christopher'}])
-
