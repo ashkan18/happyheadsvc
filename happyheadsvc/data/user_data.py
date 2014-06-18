@@ -27,6 +27,19 @@ class UserData(BaseData):
             app.logger.debug(u"Adding user id: {0}".format(user_model.id))
             self.db.users.insert(user_model.to_json())
 
+    def get_friends(self, user_id):
+        """
+        This method returns list of friends for a user
+        :param user_id: id of the user we want to get their friends
+        :return: list of friends of this user
+        """
+        friends = []
+        friends_result = self.db.users.find_one({'id': user_id})
+        for friend_id in friends_result['friends']:
+            friend_user_model = self.find_user_by_id(friend_id)
+            friends.append(friend_user_model.to_json())
+        return friends
+
     def update_user(self, user_model):
         """
         Updates an existing user model

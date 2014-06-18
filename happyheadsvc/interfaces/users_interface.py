@@ -21,6 +21,7 @@ def authenticate():
     user_service.authenticate_user(user_id=user_id, access_token=access_token, name=name)
     return jsonify(sucess=True)
 
+
 @app.route('/users/search/', methods=['GET'])
 def search_users():
     """
@@ -31,6 +32,19 @@ def search_users():
     """
     query = request.args['query']
     return jsonify(users=dumps(user_service.search_users(query)))
+
+
+@app.route('/users/<string:user_id>/friends/', methods=['GET'])
+def get_friends(user_id):
+    """
+    This method returns list of friends for a user
+    :param user_id: id of the user we are looking for
+
+    curl sample:
+        curl -X GET http://localhost:5000/users/1/friends/
+    """
+    return jsonify(users=dumps(user_service.get_friends(user_id)))
+
 
 @app.route('/users/<string:user_id>/friend/<string:friend_user_id>', methods=['POST'])
 def add_friend(user_id, friend_user_id):
