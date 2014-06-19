@@ -33,16 +33,8 @@ window.Router = Backbone.Router.extend({
     },
 
     showMessage: function(id)  {
-        // first clear the content area
-        $('#pleaseWaitDialog').modal({show:true});
-        var message = new Message({id: id});
-        // get message details from the server
-        artist.fetch({
-            success: function (data) {
-                $('#pleaseWaitDialog').modal('hide');
-                $('#content').html(new MessageView({model: data}).render().el);
-            }
-        });
+        // in this method we will make jsbridge call to open the message and take picture in native app
+        Platform.showMessageAndTakePhoto(id);
     }
 });
 
