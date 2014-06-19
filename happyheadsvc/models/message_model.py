@@ -5,6 +5,7 @@ __author__ = 'Ashkan'
 
 
 class MessageModel(BaseModel):
+    id = None
     sender_id = None
     receiver_id = None
     text = None
@@ -19,6 +20,7 @@ class MessageModel(BaseModel):
         self.image = None
         self.created_date = datetime.datetime.utcnow()
         self.seen_date = None
+        self.id = None
 
         if result_row is not None:
             self.map(result_row)

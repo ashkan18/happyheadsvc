@@ -1,3 +1,4 @@
+import uuid
 from happyheadsvc.data.message_data import MessageData
 from happyheadsvc.models.message_model import MessageModel
 
@@ -16,6 +17,7 @@ def send_message(sender_id, receiver_id, text, image):
     :return: int message id
     """
     message = MessageModel()
+    message.id = uuid.uuid4()
     message.sender_id = sender_id
     message.receiver_id = receiver_id
     message.text = text
