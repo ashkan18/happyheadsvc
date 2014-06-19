@@ -3,8 +3,8 @@ window.Router = Backbone.Router.extend({
 
     routes: {
         "inbox?userId=:userId": "inbox",
-        "friends/": "friends",
-        "messages/:id": "showMessage"
+        "friends/": "showFriends",
+        "messages/:messageId": "showMessage"
     },
 
     initialize: function () {
@@ -23,7 +23,7 @@ window.Router = Backbone.Router.extend({
 
         this.inboxModel.fetch({
             success: function (data) {
-                $("#content").append(new InboxView({model: data.toJSON()}).render().el);
+                $("#content").html(new InboxView({model: data.toJSON()}).render().el);
                 //$('#pleaseWaitDialog').modal('hide');
 
             }
@@ -32,9 +32,16 @@ window.Router = Backbone.Router.extend({
 
     },
 
-    showMessage: function(id)  {
+    showMessage: function(messageId)  {
         // in this method we will make jsbridge call to open the message and take picture in native app
-        Platform.showMessageAndTakePhoto(id);
+        Platform.showMessageAndTakePhoto(messageId);
+    },
+
+    showFriends: function() {
+        // this should call the server to show list of friends
+        $("#content").html("List of friends");
+
+
     }
 });
 
