@@ -1,4 +1,4 @@
-from kbdegreesvc import app
+from happyheadsvc import app
 
 __author__ = 'Ashkan'
 

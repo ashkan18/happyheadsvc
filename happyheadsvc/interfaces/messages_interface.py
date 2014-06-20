@@ -6,6 +6,20 @@ from flask import request, jsonify
 from happyheadsvc import app
 
 
+@app.route('/messages/user/<string:user_id>/', methods=['GET'])
+def get_inbox(user_id):
+    """
+    This method returns a list of current messages for a user
+    :param user_id: int user identifier of the user we want to get their messages
+
+    curl sample:
+        curl -X GET http://localhost:5000/messages/user/1/
+    """
+
+    inbox_message_models = message_service.get_inbox(user_id=user_id)
+    inbox_messages = [message.to_json() for message in inbox_message_models]
+    return jsonify(inbox=inbox_messages)
+
 @app.route('/messages/user/<string:sender_user_id>/friend/<string:receiver_user_id>/', methods=['POST'])
 def send_message_to_user(sender_user_id, receiver_user_id):
     """
@@ -23,16 +37,3 @@ def send_message_to_user(sender_user_id, receiver_user_id):
     return jsonify(sent=True)
 
 
-@app.route('/messages/user/<string:user_id>/', methods=['GET'])
-def get_inbox(user_id):
-    """
-    This method returns a list of current messages for a user
-    :param user_id: int user identifier of the user we want to get their messages
-
-    curl sample:
-        curl -X GET http://localhost:5000/messages/user/1/
-    """
-
-    inbox_message_models = message_service.get_inbox(user_id=user_id)
-    inbox_messages = [message.to_json() for message in inbox_message_models]
-    return jsonify(inbox=inbox_messages)
