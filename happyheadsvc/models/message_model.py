@@ -12,6 +12,7 @@ class MessageModel(BaseModel):
     image = None
     created_date = None
     seen_date = None
+    id = None
 
     def __init__(self, result_row=None):
         self.sender_id = None

@@ -27,4 +27,5 @@ class MessageData(BaseData):
         inbox = []
         for message in inbox_messages:
             inbox.append(MessageModel(message))
+
         return inbox
