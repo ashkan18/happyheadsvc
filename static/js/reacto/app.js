@@ -42,6 +42,20 @@ window.Router = Backbone.Router.extend({
         $("#content").html("List of friends");
 
 
+    },
+
+    authenticate: function(userId, name, access_token) {
+        $.ajax({
+            url:"/users/authenticate/",
+            type: 'POST',
+            data: {'user_id': userId,
+                   'name': name,
+                   'access_token': access_token},
+            success:function(result){
+                newObject.twittername = result.name; ;
+                that.$el.html(that.template(newObject));
+            }
+        });
     }
 });
 
