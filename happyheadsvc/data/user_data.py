@@ -25,7 +25,7 @@ class UserData(BaseData):
         """
         if self.find_user_by_id(user_model.id) is None:
             app.logger.debug(u"Adding user id: {0}".format(user_model.id))
-            self.db.users.insert(user_model)
+            self.db.users.insert(user_model.to_json())
 
     def get_friends(self, user_id):
         """
