@@ -3,7 +3,7 @@ from happyheadsvc import app
 from happyheadsvc.services import user_service
 
 
-@app.route('/users/authenticate', methods=['POST'])
+@app.route('/users/authenticate/', methods=['POST'])
 def authenticate():
     """
     This method will authenticate the user based on input params
