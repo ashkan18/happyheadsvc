@@ -49,8 +49,8 @@ window.Router = Backbone.Router.extend({
             url:"/users/authenticate/",
             type: 'POST',
             dataType:"json",
-            contentType: "application/json"
-            data: {'user_id': userId,
+            contentType: "application/json",
+            json: {'user_id': userId,
                    'name': name,
                    'access_token': access_token},
             success:function(result){
