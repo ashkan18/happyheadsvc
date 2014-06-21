@@ -50,7 +50,7 @@ window.Router = Backbone.Router.extend({
             type: 'POST',
             dataType:"json",
             contentType: "application/json",
-            json: {'user_id': userId,
+            data: {'user_id': userId,
                    'name': name,
                    'access_token': access_token},
             success:function(result){

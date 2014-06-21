@@ -13,9 +13,9 @@ def authenticate():
             --data '{"user_id": "111222333", "access_token":"123123", "name":"Ashkan Nasseri"}'
 
     """
-    user_id = request.json['user_id']
-    access_token = request.json['access_token']
-    name = request.json['name']
+    user_id = request.form['user_id']
+    access_token = request.form['access_token']
+    name = request.form['name']
 
     user_service.authenticate_user(user_id=user_id, access_token=access_token, name=name)
     return jsonify(sucess=True)
