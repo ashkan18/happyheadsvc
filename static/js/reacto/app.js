@@ -48,6 +48,8 @@ window.Router = Backbone.Router.extend({
         $.ajax({
             url:"/users/authenticate/",
             type: 'POST',
+            dataType:"json",
+            contentType: "application/json"
             data: {'user_id': userId,
                    'name': name,
                    'access_token': access_token},
