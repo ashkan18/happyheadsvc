@@ -11,6 +11,7 @@ window.Router = Backbone.Router.extend({
         // show header section on the initiliaze of the app
         this.headerView = new HeaderView();
         this.footerView = new FooterView();
+
     },
 
     // showing the landing page content
@@ -52,8 +53,7 @@ window.Router = Backbone.Router.extend({
                    'name': name,
                    'access_token': access_token},
             success:function(result){
-                newObject.twittername = result.name; ;
-                that.$el.html(that.template(newObject));
+                app.navigate('inbox?token='+ response.authResponse.accessToken + "&user=" + response.authResponse.userID);
             }
         });
     }
