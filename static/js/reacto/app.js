@@ -56,7 +56,7 @@ window.Router = Backbone.Router.extend({
                    'access_token': access_token},
             success:function(result){
                 // after successful login, go to inbox page
-                app.navigate('inbox?token='+ response.authResponse.accessToken + "&user=" + response.authResponse.userID);
+                app.navigate('inbox/');
             }
         });
     }
