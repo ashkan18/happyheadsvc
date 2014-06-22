@@ -3,7 +3,7 @@ window.Router = Backbone.Router.extend({
 
     routes: {
         "inbox?userId=:userId": "inbox",
-        "friends/": "showFriends",
+        "friends/:userId": "showFriends",
         "messages/:messageId": "showMessage"
     },
 
@@ -29,8 +29,6 @@ window.Router = Backbone.Router.extend({
 
             }
         });
-
-
     },
 
     showMessage: function(messageId)  {
@@ -38,7 +36,14 @@ window.Router = Backbone.Router.extend({
         Platform.showMessageAndTakePhoto(messageId);
     },
 
-    showFriends: function() {
+    showFriends: function(userId) {
+        this.friendsCollection = new FriendCollection({id: userId});
+
+        this.friendsCollection.fetch({
+           success: function(data) {
+               $("content").html(new FriendListView({model: data.toJSON()}).render().el);
+           }
+        });
         // this should call the server to show list of friends
         $("#content").html("List of friends");
 
@@ -61,7 +66,7 @@ window.Router = Backbone.Router.extend({
 
 
 // this is defined in templateLoader.js
-templateLoader.load(["InboxView", "HeaderView", "FooterView", 'MessageView'],
+templateLoader.load(["InboxView", "HeaderView", "FooterView", 'MessageView', 'FriendListItemView'],
     function () {
         // after loading templates now start the app
         app = new Router();
