@@ -2,8 +2,8 @@ var app = null;
 window.Router = Backbone.Router.extend({
 
     routes: {
-        "inbox?userId=:userId": "inbox",
-        "friends/:userId": "showFriends",
+        "inbox/": "inbox",
+        "friends/": "showFriends",
         "messages/:messageId": "showMessage"
     },
 
@@ -15,10 +15,9 @@ window.Router = Backbone.Router.extend({
     },
 
     // showing the landing page content
-    inbox: function (userId) {
+    inbox: function () {
         console.log("calling inbox with userId=" + userId);
         // render home page by creating home view
-        this.userId = userId;
 
         this.inboxModel = new InboxModel({id: this.userId});
 
@@ -36,8 +35,8 @@ window.Router = Backbone.Router.extend({
         Platform.showMessageAndTakePhoto(messageId);
     },
 
-    showFriends: function(userId) {
-        this.friendsCollection = new FriendCollection({userId: userId});
+    showFriends: function() {
+        this.friendsCollection = new FriendCollection({userId: this.userId});
 
         this.friendsCollection.fetch({
            success: function(data) {
@@ -47,6 +46,8 @@ window.Router = Backbone.Router.extend({
     },
 
     authenticate: function(userId, name, access_token) {
+        this.userId = userId;
+        this.userName = name;
         $.ajax({
             url:"/users/authenticate/",
             type: 'POST',
