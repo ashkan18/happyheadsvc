@@ -37,17 +37,13 @@ window.Router = Backbone.Router.extend({
     },
 
     showFriends: function(userId) {
-        this.friendsCollection = new FriendCollection({id: userId});
+        this.friendsCollection = new FriendCollection({userId: userId});
 
         this.friendsCollection.fetch({
            success: function(data) {
                $("content").html(new FriendListView({model: data.toJSON()}).render().el);
            }
         });
-        // this should call the server to show list of friends
-        $("#content").html("List of friends");
-
-
     },
 
     authenticate: function(userId, name, access_token) {
@@ -58,6 +54,7 @@ window.Router = Backbone.Router.extend({
                    'name': name,
                    'access_token': access_token},
             success:function(result){
+                // after successful login, go to inbox page
                 app.navigate('inbox?token='+ response.authResponse.accessToken + "&user=" + response.authResponse.userID);
             }
         });

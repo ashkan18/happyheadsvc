@@ -17,7 +17,11 @@ window.FriendCollection = Backbone.Collection.extend({
      */
     model: FriendModel,
 
-    urlRoot:"../users/<string:user_id>/friends/",
+    url: function() {
+        console.log("111-> " + this.userId);
+        console.log("222->" + this.options.userId);
+        return "../users/" + this.userId + "/friends/";
+    },
 
     parse: function( dataResponse ) {
         return dataResponse.messages;
