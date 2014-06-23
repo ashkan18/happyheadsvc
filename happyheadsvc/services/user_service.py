@@ -32,6 +32,7 @@ def search_users(name):
 def get_friends(user_id):
     return __user_data.get_friends(user_id)
 
+
 def add_friend(user_id, friend_user_id):
     user = __user_data.find_user_by_id(user_id)
     user.friends.append(friend_user_id)

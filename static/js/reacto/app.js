@@ -5,7 +5,8 @@ window.Router = Backbone.Router.extend({
         "authenticate/:userId/:name/:accessToken": "authenticate", // we should remove this later, here just for testing
         "inbox/": "inbox",
         "friends/": "showFriends",
-        "messages/:messageId": "showMessage"
+        "messages/:messageId": "showMessage",
+        "search?query=:query": "searchUsers"
     },
 
     initialize: function () {
@@ -42,6 +43,16 @@ window.Router = Backbone.Router.extend({
         this.friendsCollection.fetch({
            success: function(collection, response) {
                $("#content").html(new FriendListView({model: collection.models}).render().el);
+           }
+        });
+    },
+
+    searchUsers: function(query) {
+        this.searchCollection = new SearchCollection({searchQuery: query});
+        this.searchCollection.fetch({
+           data: {query: query},
+           success: function(collection, response) {
+               $('#content').html(new FriendListView({model: collection.models}).render().el)
            }
         });
     },
