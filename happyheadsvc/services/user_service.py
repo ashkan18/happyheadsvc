@@ -36,10 +36,10 @@ def get_friends(user_id):
 def add_friend(user_id, friend_user_id):
     user = __user_data.find_user_by_id(user_id)
     user.friends.append(friend_user_id)
-    __user_data.update_user(user)
+    __user_data.update_user(user.to_json())
 
     # we need to add this user to friend as well
     friend = __user_data.find_user_by_id(friend_user_id)
     friend.friends.append(user_id)
-    __user_data.update_user(friend)
+    __user_data.update_user(friend.to_json())
 
