@@ -5,7 +5,7 @@ window.FriendModel = Backbone.Model.extend({
     urlRoot:"../api/message/",
 
     initialize:function () {
-        this.list = new MessageCollection();
+        this.list = new FriendCollection();
     }
 
 });
@@ -22,9 +22,8 @@ window.FriendCollection = Backbone.Collection.extend({
     },
 
     parse: function( dataResponse ) {
-        return dataResponse.messages;
+        return dataResponse.friends;
     }
-
 });
 
 

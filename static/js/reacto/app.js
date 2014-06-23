@@ -2,6 +2,7 @@ var app = null;
 window.Router = Backbone.Router.extend({
 
     routes: {
+        "authenticate/:userId/:name/:accessToken": "authenticate", // we should remove this later, here just for testing
         "inbox/": "inbox",
         "friends/": "showFriends",
         "messages/:messageId": "showMessage"
@@ -39,8 +40,8 @@ window.Router = Backbone.Router.extend({
         this.friendsCollection = new FriendCollection({userId: this.userId});
 
         this.friendsCollection.fetch({
-           success: function(data) {
-               $("content").html(new FriendListView({model: data.toJSON()}).render().el);
+           success: function(collection, response) {
+               $("#content").html(new FriendListView({model: collection.models}).render().el);
            }
         });
     },

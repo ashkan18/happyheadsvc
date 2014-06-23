@@ -9,17 +9,16 @@ window.FriendListView = Backbone.View.extend({
 
     render:function () {
         $(this.el).empty();
-        var friends = this.model.friends;
-        _.each(friends, function (friend) {
-            $(this.el).append(new FriendListItemView({model: friend}).render().el);
+        _.each(this.model, function (friend) {
+            $(this.el).append(new FriendListItemView({model: friend.toJSON()}).render().el);
         }, this);
         return this;
     }
 });
 
 window.FriendListItemView = Backbone.View.extend({
-   tagName: 'li',
-   className: 'table-view',
+    tagName: 'li',
+    className: 'table-view-cell',
 
     initialize : function() {
 
