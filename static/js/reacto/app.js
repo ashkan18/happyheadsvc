@@ -69,6 +69,4 @@ templateLoader.load(["InboxView", "HeaderView", "FooterView", 'MessageView', 'Fr
         // after loading templates now start the app
         app = new Router();
         Backbone.history.start();
-        app.navigate('inbox?userId='+ 2);
-
     });
