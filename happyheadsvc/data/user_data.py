@@ -45,7 +45,7 @@ class UserData(BaseData):
         Updates an existing user model
         :param user_model: user model of existing user with modified params
         """
-        self.db.users.update({'id': user_model.id}, user_model, upsert=False)
+        self.db.users.update({'id': user_model.id}, user_model.to_json(), upsert=False)
 
     def search_by_name(self, name):
         """
